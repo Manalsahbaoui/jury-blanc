@@ -6,14 +6,30 @@ const router = express.Router();
 // Créer un projet
 router.post('/', async (req, res) => {
     try {
-        const newProject = new Project(req.body);
+        // Vérifier si toutes les données requises sont présentes
+        if (!req.body.name || !req.body.description) {
+            return res.status(400).json({ message: "Le nom et la description sont requis." });
+        }
+
+        // Création et sauvegarde du projet
+        const newProject = new Project({
+            name:req.body.name,
+            description:req.body.description,
+            price:req.body.price,
+            stock:req.body.stock
+        });
         const savedProject = await newProject.save();
+
         res.status(201).json(savedProject);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        // Vérifier si l'erreur est due à Mongoose (ex : validation)
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ message: error.message });
+        }
+
+        res.status(500).json({ message: "Erreur serveur : " + error.message });
     }
 });
-
 // Récupérer tous les projets
 router.get('/', async (req, res) => {
     try {
