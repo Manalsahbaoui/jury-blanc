@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -33,3 +34,12 @@ function App() {
 }
 
 export default App;
+=======
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+}
+>>>>>>> 6ef87fa5a1c144951ab706672ba129dc7dc23e4d

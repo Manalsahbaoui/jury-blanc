@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.8.4",
     "react": "^19.0.0",
     "react-data-table-component": "^7.7.0",
@@ -20,6 +21,14 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+=======
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@tailwindcss/vite": "^4.0.14",
+>>>>>>> 6ef87fa5a1c144951ab706672ba129dc7dc23e4d
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
