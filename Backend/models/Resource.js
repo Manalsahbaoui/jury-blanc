@@ -1,10 +1,33 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const resourceSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+  task: {  // Corrected field name from 'project' to 'task'
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Task", 
+    required: true 
+  },
+  resourceName: {
     type: String,
-    quantity: Number,
-    project: { type: mongoose.Schema.Types.ObjectId, ref: 'Project', required: true }
-}, { timestamps: true });
+    required: true,
+    trim: true
+  },
+  type: {
+    type: String,
+    required: true,
+    enum: ['Equipment', 'Software', 'Human', 'Other'] // Unification des langues
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    min: 1
+  },
+  supplier: {
+    type: String,
+    required: true,
+    trim: true
+  }
+});
 
-module.exports = mongoose.model('Resource', resourceSchema);
+const Resource = mongoose.model('Resource', resourceSchema);
+
+export default Resource;
